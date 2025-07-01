@@ -4,116 +4,369 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>サポート - RecRead</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
+        :root {
+            --primary-color: #007AFF;
+            --secondary-color: #5856D6;
+            --accent-color: #FF2D92;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --bg-primary: #f5f5f7;
+            --bg-secondary: #ffffff;
+            --shadow-light: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-medium: 0 4px 20px rgba(0,0,0,0.15);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f5f5f7;
-            color: #1d1d1f;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
         }
         
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
         }
         
         header {
             text-align: center;
-            padding: 40px 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 50px 0;
+            background: var(--gradient-primary);
             color: white;
-            border-radius: 10px;
+            border-radius: var(--border-radius);
             margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
         }
         
         h1 {
-            font-size: 2.5em;
+            font-size: 3em;
             margin: 0;
             font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-subtitle {
+            font-size: 1.1em;
+            margin-top: 10px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
         }
         
         .nav {
-            background: white;
+            background: var(--bg-secondary);
             padding: 20px;
-            border-radius: 10px;
+            border-radius: var(--border-radius);
             margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-light);
         }
         
         .nav a {
             text-decoration: none;
-            color: #007AFF;
+            color: var(--primary-color);
             font-weight: 500;
             padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            border-radius: 25px;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .nav a:hover {
-            background-color: #f0f0f0;
+            background-color: rgba(0,122,255,0.1);
+            transform: translateY(-2px);
         }
         
         .content {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: var(--bg-secondary);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
         }
         
         h2 {
-            color: #1d1d1f;
-            border-bottom: 2px solid #007AFF;
-            padding-bottom: 10px;
-            margin-top: 30px;
+            color: var(--text-primary);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            font-size: 2.2em;
+            font-weight: 600;
+        }
+
+        h2:first-child {
+            margin-top: 0;
         }
         
         h3 {
-            color: #007AFF;
-            margin-top: 25px;
-        }
-        
-        .faq-item {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
+            color: var(--primary-color);
+            margin-top: 30px;
             margin-bottom: 15px;
-            border-left: 4px solid #007AFF;
+            font-size: 1.4em;
+            font-weight: 600;
         }
         
-        .faq-question {
-            font-weight: 600;
-            margin-bottom: 10px;
+        .usage-steps {
+            display: grid;
+            gap: 20px;
+            margin: 30px 0;
         }
         
         .usage-step {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border-left: 4px solid #28a745;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border-left: 5px solid #28a745;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .usage-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .usage-step:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .usage-step:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
         }
         
         .step-number {
             background: #28a745;
             color: white;
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            margin-right: 10px;
+            margin-right: 15px;
+            font-size: 1.1em;
+        }
+
+        .step-content {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .step-text {
+            flex: 1;
+        }
+
+        .step-text strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+        
+        .faq-container {
+            margin: 30px 0;
+        }
+
+        .faq-item {
+            background: var(--bg-secondary);
+            border: 1px solid #e5e5e7;
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-light);
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            margin: 0;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8f9fa;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5em;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .faq-question.active::after {
+            transform: rotate(45deg);
+        }
+        
+        .faq-question:hover {
+            background: #e9ecef;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: var(--bg-secondary);
+        }
+
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 200px;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e5e5e7;
+            border-radius: var(--border-radius);
+            font-size: 1em;
+            transition: var(--transition);
+            background: var(--bg-secondary);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0,122,255,0.1);
+        }
+
+        .troubleshooting-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .troubleshooting-card {
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border-left: 5px solid #e53e3e;
+        }
+
+        .troubleshooting-card h3 {
+            color: #e53e3e;
+            margin-top: 0;
+        }
+
+        .troubleshooting-card ul {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+
+        .troubleshooting-card li {
+            margin-bottom: 8px;
         }
         
         footer {
             text-align: center;
-            padding: 20px;
-            color: #666;
+            padding: 30px;
+            color: var(--text-secondary);
             font-size: 0.9em;
+            border-top: 1px solid #e5e5e7;
+            margin-top: 40px;
+        }
+
+        .contact-cta {
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .contact-cta a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 15px;
+            transition: var(--transition);
+        }
+
+        .contact-cta a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .troubleshooting-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .step-number {
+                align-self: flex-start;
+            }
         }
     </style>
 </head>
@@ -121,6 +374,7 @@
     <div class="container">
         <header>
             <h1>サポート</h1>
+            <p class="header-subtitle">RecReadの使い方とよくある質問</p>
         </header>
         
         <nav class="nav">
@@ -129,101 +383,221 @@
         
         <div class="content">
             <h2>使い方</h2>
-            <div class="usage-step">
-                <span class="step-number">1</span>
-                <strong>アプリを起動</strong><br>
-                RecReadアプリをタップして起動します。
-            </div>
-            <div class="usage-step">
-                <span class="step-number">2</span>
-                <strong>録音ボタンをタップ</strong><br>
-                画面中央の録音ボタンをタップして録音を開始します。
-            </div>
-            <div class="usage-step">
-                <span class="step-number">3</span>
-                <strong>話し始める</strong><br>
-                マイクに向かって話し始めると、リアルタイムで文字に変換されます。
-            </div>
-            <div class="usage-step">
-                <span class="step-number">4</span>
-                <strong>録音を停止</strong><br>
-                録音ボタンを再度タップして録音を停止し、文字起こしを完了します。
+            <div class="usage-steps">
+                <div class="usage-step">
+                    <div class="step-content">
+                        <span class="step-number">1</span>
+                        <div class="step-text">
+                            <strong>アプリを起動</strong>
+                            RecReadアプリをタップして起動します。
+                        </div>
+                    </div>
+                </div>
+                <div class="usage-step">
+                    <div class="step-content">
+                        <span class="step-number">2</span>
+                        <div class="step-text">
+                            <strong>録音ボタンをタップ</strong>
+                            画面中央の録音ボタンをタップして録音を開始します。
+                        </div>
+                    </div>
+                </div>
+                <div class="usage-step">
+                    <div class="step-content">
+                        <span class="step-number">3</span>
+                        <div class="step-text">
+                            <strong>話し始める</strong>
+                            マイクに向かって話し始めると、リアルタイムで文字に変換されます。
+                        </div>
+                    </div>
+                </div>
+                <div class="usage-step">
+                    <div class="step-content">
+                        <span class="step-number">4</span>
+                        <div class="step-text">
+                            <strong>録音を停止</strong>
+                            録音ボタンを再度タップして録音を停止し、文字起こしを完了します。
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <h2>よくある質問（FAQ）</h2>
             
-            <div class="faq-item">
-                <div class="faq-question">Q: インターネット接続は必要ですか？</div>
-                <div>A: いいえ、RecReadはオフラインで動作します。音声認識処理はデバイス内で行われるため、インターネット接続は不要です。</div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="質問を検索..." id="faqSearch">
             </div>
             
-            <div class="faq-item">
-                <div class="faq-question">Q: どの言語に対応していますか？</div>
-                <div>A: 日本語と英語に対応しています。今後、他の言語にも対応予定です。</div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">Q: カスタム辞書の登録方法を教えてください</div>
-                <div>A: 設定画面から「カスタム辞書」を選択し、「追加」ボタンをタップして単語を登録できます。専門用語や固有名詞を登録することで、認識精度が向上します。</div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">Q: 録音時間に制限はありますか？</div>
-                <div>A: デバイスの容量に応じて録音可能です。長時間の録音も可能ですが、バッテリー消費にご注意ください。</div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">Q: 文字起こしデータはどこに保存されますか？</div>
-                <div>A: すべてのデータはデバイス内に保存されます。クラウドにはアップロードされないため、プライバシーが保護されます。</div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">Q: データをエクスポートできますか？</div>
-                <div>A: はい、文字起こしデータをテキストファイルとしてエクスポートできます。共有機能を使用して他のアプリに送信することも可能です。</div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">Q: 背景ノイズがある環境でも使用できますか？</div>
-                <div>A: はい、RecReadは背景ノイズに強い設計になっています。ただし、静かな環境での使用をお勧めします。</div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">Q: 複数の話者の音声を認識できますか？</div>
-                <div>A: はい、複数の話者の音声にも対応しています。ただし、話者が明確に区別できる環境での使用をお勧めします。</div>
+            <div class="faq-container" id="faqContainer">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        インターネット接続は必要ですか？
+                    </div>
+                    <div class="faq-answer">
+                        いいえ、RecReadはオフラインで動作します。音声認識処理はデバイス内で行われるため、インターネット接続は不要です。
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        どの言語に対応していますか？
+                    </div>
+                    <div class="faq-answer">
+                        日本語と英語に対応しています。今後、他の言語にも対応予定です。
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        カスタム辞書の登録方法を教えてください
+                    </div>
+                    <div class="faq-answer">
+                        設定画面から「カスタム辞書」を選択し、「追加」ボタンをタップして単語を登録できます。専門用語や固有名詞を登録することで、認識精度が向上します。
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        録音時間に制限はありますか？
+                    </div>
+                    <div class="faq-answer">
+                        デバイスの容量に応じて録音可能です。長時間の録音も可能ですが、バッテリー消費にご注意ください。
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        文字起こしデータはどこに保存されますか？
+                    </div>
+                    <div class="faq-answer">
+                        すべてのデータはデバイス内に保存されます。クラウドにはアップロードされないため、プライバシーが保護されます。
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        データをエクスポートできますか？
+                    </div>
+                    <div class="faq-answer">
+                        はい、文字起こしデータをテキストファイルとしてエクスポートできます。共有機能を使用して他のアプリに送信することも可能です。
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        背景ノイズがある環境でも使用できますか？
+                    </div>
+                    <div class="faq-answer">
+                        はい、RecReadは背景ノイズに強い設計になっています。ただし、静かな環境での使用をお勧めします。
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        複数の話者の音声を認識できますか？
+                    </div>
+                    <div class="faq-answer">
+                        はい、複数の話者の音声にも対応しています。ただし、話者が明確に区別できる環境での使用をお勧めします。
+                    </div>
+                </div>
             </div>
             
             <h2>トラブルシューティング</h2>
             
-            <h3>音声が認識されない場合</h3>
-            <ul>
-                <li>マイクの権限が許可されているか確認してください</li>
-                <li>デバイスの音量設定を確認してください</li>
-                <li>静かな環境で試してみてください</li>
-                <li>アプリを再起動してみてください</li>
-            </ul>
+            <div class="troubleshooting-grid">
+                <div class="troubleshooting-card">
+                    <h3>音声が認識されない場合</h3>
+                    <ul>
+                        <li>マイクの権限が許可されているか確認してください</li>
+                        <li>デバイスの音量設定を確認してください</li>
+                        <li>静かな環境で試してみてください</li>
+                        <li>アプリを再起動してみてください</li>
+                    </ul>
+                </div>
+                
+                <div class="troubleshooting-card">
+                    <h3>認識精度が低い場合</h3>
+                    <ul>
+                        <li>カスタム辞書に専門用語を登録してください</li>
+                        <li>ゆっくりと話してみてください</li>
+                        <li>マイクに近づいて話してみてください</li>
+                        <li>背景ノイズを減らしてください</li>
+                    </ul>
+                </div>
+                
+                <div class="troubleshooting-card">
+                    <h3>アプリが動作しない場合</h3>
+                    <ul>
+                        <li>デバイスを再起動してください</li>
+                        <li>アプリを最新バージョンに更新してください</li>
+                        <li>デバイスの容量を確認してください</li>
+                    </ul>
+                </div>
+            </div>
             
-            <h3>認識精度が低い場合</h3>
-            <ul>
-                <li>カスタム辞書に専門用語を登録してください</li>
-                <li>ゆっくりと話してみてください</li>
-                <li>マイクに近づいて話してみてください</li>
-                <li>背景ノイズを減らしてください</li>
-            </ul>
-            
-            <h3>アプリが動作しない場合</h3>
-            <ul>
-                <li>デバイスを再起動してください</li>
-                <li>アプリを最新バージョンに更新してください</li>
-                <li>デバイスの容量を確認してください</li>
-            </ul>
-            
-            <h2>お問い合わせ</h2>
-            <p>上記の情報で解決しない場合は、<a href="contact.html">お問い合わせページ</a>からご連絡ください。</p>
+            <div class="contact-cta">
+                <h3>まだ解決しませんか？</h3>
+                <p>上記の情報で解決しない場合は、お気軽にお問い合わせください。</p>
+                <a href="contact.html">お問い合わせページへ</a>
+            </div>
         </div>
         
         <footer>
             <p>&copy; 2024 RecRead. All rights reserved.</p>
         </footer>
     </div>
+
+    <script>
+        // FAQ アコーディオン機能
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = question.classList.contains('active');
+                
+                // 他のFAQを閉じる
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    q.classList.remove('active');
+                    q.nextElementSibling.classList.remove('active');
+                });
+                
+                // クリックされたFAQを開く
+                if (!isActive) {
+                    question.classList.add('active');
+                    answer.classList.add('active');
+                }
+            });
+        });
+
+        // 検索機能
+        document.getElementById('faqSearch').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html> 

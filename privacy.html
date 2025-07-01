@@ -4,90 +4,334 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>プライバシーポリシー - RecRead</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
+        :root {
+            --primary-color: #007AFF;
+            --secondary-color: #5856D6;
+            --accent-color: #FF2D92;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --bg-primary: #f5f5f7;
+            --bg-secondary: #ffffff;
+            --shadow-light: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-medium: 0 4px 20px rgba(0,0,0,0.15);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f5f5f7;
-            color: #1d1d1f;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
         }
         
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
         }
         
         header {
             text-align: center;
-            padding: 40px 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 50px 0;
+            background: var(--gradient-primary);
             color: white;
-            border-radius: 10px;
+            border-radius: var(--border-radius);
             margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
         }
         
         h1 {
-            font-size: 2.5em;
+            font-size: 3em;
             margin: 0;
             font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-subtitle {
+            font-size: 1.1em;
+            margin-top: 10px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
         }
         
         .nav {
-            background: white;
+            background: var(--bg-secondary);
             padding: 20px;
-            border-radius: 10px;
+            border-radius: var(--border-radius);
             margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-light);
         }
         
         .nav a {
             text-decoration: none;
-            color: #007AFF;
+            color: var(--primary-color);
             font-weight: 500;
             padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            border-radius: 25px;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .nav a:hover {
-            background-color: #f0f0f0;
+            background-color: rgba(0,122,255,0.1);
+            transform: translateY(-2px);
         }
         
         .content {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: var(--bg-secondary);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
         }
         
         h2 {
-            color: #1d1d1f;
-            border-bottom: 2px solid #007AFF;
-            padding-bottom: 10px;
-            margin-top: 30px;
+            color: var(--text-primary);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            font-size: 2.2em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h2:first-child {
+            margin-top: 0;
         }
         
         h3 {
-            color: #007AFF;
-            margin-top: 25px;
+            color: var(--primary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-icon {
+            font-size: 1.2em;
         }
         
         .update-date {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            border-left: 4px solid #007AFF;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .update-date:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .update-date strong {
+            color: var(--primary-color);
+        }
+        
+        .privacy-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            border-left: 5px solid var(--primary-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .privacy-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .privacy-section:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .privacy-section:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .privacy-section h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .privacy-section ul {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+
+        .privacy-section li {
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-secondary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .highlight-box:hover::before {
+            transform: scaleX(1);
+        }
+
+        .highlight-box h3 {
+            color: #d68910;
+            margin-top: 0;
+        }
+
+        .contact-link {
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .contact-link a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 15px;
+            transition: var(--transition);
+        }
+
+        .contact-link a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .toc {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin: 30px 0;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .toc h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+        }
+
+        .toc a {
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 15px;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .toc a:hover {
+            background: rgba(0,122,255,0.1);
+            color: var(--primary-color);
         }
         
         footer {
             text-align: center;
-            padding: 20px;
-            color: #666;
+            padding: 30px;
+            color: var(--text-secondary);
             font-size: 0.9em;
+            border-top: 1px solid #e5e5e7;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .privacy-section {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -95,6 +339,7 @@
     <div class="container">
         <header>
             <h1>プライバシーポリシー</h1>
+            <p class="header-subtitle">RecReadにおける個人情報の取り扱いについて</p>
         </header>
         
         <nav class="nav">
@@ -105,70 +350,164 @@
             <div class="update-date">
                 <strong>最終更新日:</strong> 2024年6月5日
             </div>
+
+            <div class="toc">
+                <h3><span class="section-icon">📋</span>目次</h3>
+                <ul>
+                    <li><a href="#introduction">1. はじめに</a></li>
+                    <li><a href="#collection">2. 収集する情報</a></li>
+                    <li><a href="#usage">3. 情報の利用目的</a></li>
+                    <li><a href="#storage">4. 情報の保存</a></li>
+                    <li><a href="#ads">5. 広告について</a></li>
+                    <li><a href="#sharing">6. 情報の共有</a></li>
+                    <li><a href="#security">7. セキュリティ</a></li>
+                    <li><a href="#contact">8. お問い合わせ</a></li>
+                    <li><a href="#changes">9. プライバシーポリシーの変更</a></li>
+                </ul>
+            </div>
             
-            <h2>1. はじめに</h2>
-            <p>RecRead（以下「本アプリ」）は、ユーザーのプライバシーを尊重し、個人情報の保護に最大限の注意を払っています。本プライバシーポリシーでは、本アプリにおける個人情報の取り扱いについて説明します。</p>
+            <section id="introduction" class="privacy-section">
+                <h2><span class="section-icon">📝</span>1. はじめに</h2>
+                <p>RecRead（以下「本アプリ」）は、ユーザーのプライバシーを尊重し、個人情報の保護に最大限の注意を払っています。本プライバシーポリシーでは、本アプリにおける個人情報の取り扱いについて説明します。</p>
+            </section>
             
-            <h2>2. 収集する情報</h2>
-            <p>本アプリでは、以下の情報を収集する場合があります：</p>
+            <section id="collection" class="privacy-section">
+                <h2><span class="section-icon">📊</span>2. 収集する情報</h2>
+                <p>本アプリでは、以下の情報を収集する場合があります：</p>
+                
+                <h3><span class="section-icon">🎤</span>2.1 音声データ</h3>
+                <ul>
+                    <li>アプリ内での音声録音データ</li>
+                    <li>文字起こしのための音声データ</li>
+                </ul>
+                
+                <h3><span class="section-icon">📱</span>2.2 デバイス情報</h3>
+                <ul>
+                    <li>デバイスの種類</li>
+                    <li>オペレーティングシステムのバージョン</li>
+                    <li>アプリのバージョン</li>
+                </ul>
+                
+                <h3><span class="section-icon">📈</span>2.3 広告識別子</h3>
+                <ul>
+                    <li>広告表示のための識別子</li>
+                </ul>
+            </section>
             
-            <h3>2.1 音声データ</h3>
-            <ul>
-                <li>アプリ内での音声録音データ</li>
-                <li>文字起こしのための音声データ</li>
-            </ul>
+            <section id="usage" class="privacy-section">
+                <h2><span class="section-icon">🎯</span>3. 情報の利用目的</h2>
+                <p>収集した情報は以下の目的で利用されます：</p>
+                <ul>
+                    <li>音声の文字起こし機能の提供</li>
+                    <li>アプリの機能改善</li>
+                    <li>広告の表示</li>
+                    <li>ユーザーサポートの提供</li>
+                </ul>
+            </section>
             
-            <h3>2.2 デバイス情報</h3>
-            <ul>
-                <li>デバイスの種類</li>
-                <li>オペレーティングシステムのバージョン</li>
-                <li>アプリのバージョン</li>
-            </ul>
+            <section id="storage" class="privacy-section">
+                <h2><span class="section-icon">💾</span>4. 情報の保存</h2>
+                <ul>
+                    <li>音声データはデバイス内に保存され、クラウドにはアップロードされません</li>
+                    <li>ユーザー辞書データはデバイス内に保存されます</li>
+                </ul>
+            </section>
             
-            <h3>2.3 広告識別子</h3>
-            <ul>
-                <li>広告表示のための識別子</li>
-            </ul>
+            <section id="ads" class="privacy-section">
+                <h2><span class="section-icon">📢</span>5. 広告について</h2>
+                <p>本アプリでは、Google AdMobを使用して広告を表示しています。AdMobのプライバシーポリシーについては、以下のURLでご確認いただけます：</p>
+                <p><a href="https://policies.google.com/privacy" target="_blank" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">https://policies.google.com/privacy</a></p>
+            </section>
             
-            <h2>3. 情報の利用目的</h2>
-            <p>収集した情報は以下の目的で利用されます：</p>
-            <ul>
-                <li>音声の文字起こし機能の提供</li>
-                <li>アプリの機能改善</li>
-                <li>広告の表示</li>
-                <li>ユーザーサポートの提供</li>
-            </ul>
+            <section id="sharing" class="privacy-section">
+                <h2><span class="section-icon">🤝</span>6. 情報の共有</h2>
+                <p>本アプリは、以下の場合を除き、収集した情報を第三者と共有することはありません：</p>
+                <ul>
+                    <li>法令に基づく場合</li>
+                    <li>ユーザーの同意がある場合</li>
+                </ul>
+            </section>
             
-            <h2>4. 情報の保存</h2>
-            <ul>
-                <li>音声データはデバイス内に保存され、クラウドにはアップロードされません</li>
-                <li>ユーザー辞書データはデバイス内に保存されます</li>
-            </ul>
+            <section id="security" class="privacy-section">
+                <h2><span class="section-icon">🔒</span>7. セキュリティ</h2>
+                <p>本アプリは、収集した情報の保護に適切なセキュリティ対策を実施しています。</p>
+            </section>
             
-            <h2>5. 広告について</h2>
-            <p>本アプリでは、Google AdMobを使用して広告を表示しています。AdMobのプライバシーポリシーについては、以下のURLでご確認いただけます：</p>
-            <p><a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a></p>
+            <section id="contact" class="privacy-section">
+                <h2><span class="section-icon">📞</span>8. お問い合わせ</h2>
+                <p>本プライバシーポリシーに関するお問い合わせは、<a href="contact.html" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">お問い合わせページ</a>からご連絡ください。</p>
+            </section>
             
-            <h2>6. 情報の共有</h2>
-            <p>本アプリは、以下の場合を除き、収集した情報を第三者と共有することはありません：</p>
-            <ul>
-                <li>法令に基づく場合</li>
-                <li>ユーザーの同意がある場合</li>
-            </ul>
-            
-            <h2>7. セキュリティ</h2>
-            <p>本アプリは、収集した情報の保護に適切なセキュリティ対策を実施しています。</p>
-            
-            <h2>8. お問い合わせ</h2>
-            <p>本プライバシーポリシーに関するお問い合わせは、<a href="contact.html">お問い合わせページ</a>からご連絡ください。</p>
-            
-            <h2>9. プライバシーポリシーの変更</h2>
-            <p>本プライバシーポリシーは、必要に応じて変更される場合があります。変更があった場合は、アプリ内で通知します。</p>
+            <section id="changes" class="privacy-section">
+                <h2><span class="section-icon">🔄</span>9. プライバシーポリシーの変更</h2>
+                <p>本プライバシーポリシーは、必要に応じて変更される場合があります。変更があった場合は、アプリ内で通知します。</p>
+            </section>
+
+            <div class="highlight-box">
+                <h3><span class="section-icon">💡</span>重要なポイント</h3>
+                <ul>
+                    <li>すべての音声データはデバイス内に保存されます</li>
+                    <li>クラウドへのアップロードは行いません</li>
+                    <li>プライバシーを最優先に設計されています</li>
+                    <li>オフラインで完全に動作します</li>
+                </ul>
+            </div>
+
+            <div class="contact-link">
+                <h3>ご質問がございましたら</h3>
+                <p>プライバシーポリシーについてご不明な点がございましたら、お気軽にお問い合わせください。</p>
+                <a href="contact.html">お問い合わせページへ</a>
+            </div>
         </div>
         
         <footer>
             <p>&copy; 2024 RecRead. All rights reserved.</p>
         </footer>
     </div>
+
+    <script>
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 目次のハイライト
+        const sections = document.querySelectorAll('.privacy-section');
+        const tocLinks = document.querySelectorAll('.toc a');
+
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '-20% 0px -20% 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                const tocLink = document.querySelector(`.toc a[href="#${id}"]`);
+                
+                if (entry.isIntersecting) {
+                    tocLinks.forEach(link => link.style.fontWeight = 'normal');
+                    if (tocLink) {
+                        tocLink.style.fontWeight = 'bold';
+                        tocLink.style.background = 'rgba(0,122,255,0.1)';
+                        tocLink.style.color = 'var(--primary-color)';
+                    }
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html> 
